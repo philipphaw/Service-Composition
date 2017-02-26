@@ -1,0 +1,21 @@
+//Service Gateway Description
+{
+  "service_name": "string",
+  "grpc_ip": "string",
+  "grpc_port": "integer",
+  "grpc_service_name": "string",
+  "grpc_package_name": "string",
+  "authentication_type": "string",
+  "requests": [object]
+  ]
+}
+
+//Request
+{
+  "http-method": "string",
+  "route": "string",
+  "query_parameter": ["string"],
+  "header_parameter": ["string"],
+  "grpc_function": "string",
+  "response_parameter": ["string"]
+}

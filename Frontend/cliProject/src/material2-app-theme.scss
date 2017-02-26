@@ -1,0 +1,66 @@
+@import '~@angular/material/core/theming/all-theme';
+
+// NOTE: Theming is currently experimental and not yet publically released!
+
+@include mat-core();
+
+
+/*
+$primary: mat-palette($mat-teal, 500, 100, 700);
+$accent:  mat-palette($mat-purple, 500, 300,800);
+$warn: mat-palette($mat-red, 500, 300, 900);
+$background: mat-palette($mat-grey, 500, 0, 600);
+*/
+
+$primary: mat-palette($mat-indigo, 700, 100, 500);
+$primaryHue: mat-palette($mat-indigo, 100);
+$accent:  mat-palette($mat-pink, A200, A100,A400);
+$warn: mat-palette($mat-red, 500, 300, 900);
+$success: mat-palette($mat-light-green,A200,A400,A700);
+$background: mat-palette($mat-grey, 100, 50, 200);
+
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+.m2app-dark {
+  $dark-primary: mat-palette($mat-pink, 700, 500, 900);
+  $dark-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+  $dark-warn:    mat-palette($mat-deep-orange);
+
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+  @include angular-material-theme($dark-theme);
+}
+
+// Use mat-color to extract individual colors from a palette as necessary.
+.register-toolbar{
+  background-color: mat-color($primaryHue);
+}
+
+.bgEven{
+  background-color: mat-color($background,50);
+}
+
+.snackBarSuccess {
+  animation: snackBarSuccess 5000ms infinite;
+}
+
+@keyframes snackBarSuccess {
+  0% { background: mat-color($success,A400); }
+  100% { background: mat-color($success,A700); }
+}
+
+.snackBarError {
+  animation: snackBarError 5000ms infinite;
+  text-align: end;
+}
+
+@keyframes snackBarError {
+  0% { background: mat-color($warn,500); }
+  100% { background: mat-color($warn,900); }
+}
+
+.bgUnEven{
+  background-color: mat-color($background,200);
+}

@@ -1,0 +1,7 @@
+{
+  "httpPort" : 8081,
+  "grpcServerIp":"localhost",
+  "grpcServerPort":50061,
+  "userManagementServiceIp":"localhost",
+  "userManagementServicePort":50054
+}

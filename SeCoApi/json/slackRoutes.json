@@ -1,0 +1,48 @@
+{
+  "service_name": "SLACK",
+  "grpc_ip": "localhost",
+  "grpc_port": 50048,
+  "grpc_service_name": "SlackMessaging",
+  "grpc_package_name": "slackMessaging",
+  "authentication_type": "OAUTH2",
+  "requests": [
+    {
+      "http-method": "get",
+      "route": "/slack/channelList",
+      "grpc_function": "getChannelList",
+      "response_parameter": [
+        "channels"
+      ],
+      "notification": false
+    },
+    {
+      "http-method": "get",
+      "route": "/slack/:channel/messages",
+      "query_parameter": [
+        "channel",
+        "oldest"
+      ],
+      "grpc_function": "getChannelMessages",
+      "response_parameter": [
+        "messages",
+        "timeStampOfLastMsg"
+      ],
+      "notification": false
+    },
+    {
+      "http-method": "post",
+      "route": "/slack/:channel/message",
+      "query_parameter": [
+        "channel",
+        "message",
+        "as_user"
+      ],
+      "grpc_function": "sendMessage",
+      "response_parameter": [
+        "status"
+      ],
+      "notification": true,
+      "message": "new message sent"
+    }
+  ]
+}

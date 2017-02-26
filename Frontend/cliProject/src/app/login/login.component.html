@@ -1,0 +1,33 @@
+﻿<div layout="row" layout-padding layout-align="center">
+  <md-card flex="70" class="app-input-section registerCard" layout="column">
+    <md-toolbar color="primary" class="register-toolbar" layout="row" layout-align="center center">Login</md-toolbar>
+    <md-card-content layout="column">
+      <div layout="row" layout-align="center center" layout-padding>
+        <md-icon>account_circle</md-icon>
+        <md-input-container flex="grow">
+          <input mdInput class="loginUsernameInput" dividerColor="accent" [(ngModel)]="model.username" #username
+                 placeholder="Username" maxlength="20"
+                 minlength="6"
+                 required>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-align="center center" layout-padding>
+        <md-icon>lock</md-icon>
+        <md-input-container flex="grow">
+        <input mdInput class="loginPasswordInput" dividerColor="accent" [(ngModel)]="model.password" #password1
+                  placeholder="Password" maxlength="20"
+                  minlength="6"
+                  required type="password">
+        </md-input-container>
+      </div>
+      <md-progress-circle *ngIf="loading" mode="indeterminate" color="accent"></md-progress-circle>
+      <div layout="row" layout-padding layout-align="space-around center">
+        <button class="loginButton" flex="45" (click)="login()"
+                [disabled]="username.characterCount < 1 || password1.characterCount < 1"
+                md-raised-button md-ripple type="submit" layout-margin color="accent">login
+        </button>
+        <button routerLink="/register" flex="45" md-raised-button md-ripple color="accent">cancel</button>
+      </div>
+    </md-card-content>
+  </md-card>
+</div>

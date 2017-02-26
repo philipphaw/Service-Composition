@@ -1,0 +1,46 @@
+{
+  "service_name": "BITBUCKET",
+  "grpc_ip": "localhost",
+  "grpc_port": 50071,
+  "grpc_service_name": "VersionControl",
+  "grpc_package_name": "versionControl",
+  "authentication_type": "OAUTH2",
+  "requests": [
+    {
+      "http-method": "get",
+      "route": "/bitbucket/repositories",
+      "grpc_function": "getRepositories",
+      "response_parameter": [
+        "repos"
+      ],
+      "notification": false
+    },
+    {
+      "http-method": "get",
+      "route": "/bitbucket/:repository/filetree",
+      "query_parameter": [
+        "path",
+        "repository"
+      ],
+      "grpc_function": "getRepositoryContent",
+      "response_parameter": [
+        "dirs"
+      ],
+      "notification": false
+    },
+    {
+      "http-method": "post",
+      "route": "/bitbucket/:repository/share",
+      "query_parameter": [
+        "repository",
+        "usernameToAdd"
+      ],
+      "grpc_function": "addUserToRepository",
+      "response_parameter": [
+        "status"
+      ],
+      "notification": true,
+      "message": "shared Repository"
+    }
+  ]
+}
